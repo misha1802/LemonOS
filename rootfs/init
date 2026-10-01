@@ -6,9 +6,15 @@ mount -t devtmpfs none /dev
 ln -sf /bin/busybox /sbin/poweroff
 ln -sf /bin/busybox /sbin/reboot
 
-mkdir -p /var/cache/apk /tmp
+mkdir -p /var/cache/apk /tmp /home/lemon
 mount -t tmpfs -o size=128M tmpfs /var/cache/apk
 mount -t tmpfs -o size=64M tmpfs /tmp
+
+echo "LemonOS" > /etc/hostname
+
+export USER=lemon
+export HOME=/home/lemon
+export LOGNAME=lemon
 
 for i in 1 2 3 4 5; do
     if [ -d /sys/class/net/eth0 ]; then
@@ -21,12 +27,13 @@ ifconfig eth0 up 2>/dev/null
 udhcpc -i eth0 -b -q
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
+cat << 'EOF' > /home/lemon/.bashrc
 alias fastfetch="fastfetch --logo linux"
+clear
+fastfetch
+PS1='\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+EOF
 
-echo ""
-echo "======================================"
-echo "  Welcome to LemonOS 0.1  "
-echo "======================================"
-echo ""
+echo "source /usr/share/bash-completion/bash_completion" >> /home/lemon/.bashrc
 
-exec /bin/sh
+exec /bin/bash --login
