@@ -1,4 +1,6 @@
-# LemonOS 0.1
+
+# LemonOS 0.3
+
 
 LemonOS is a lightweight and fast custom Linux distribution built on top of the **Linux 6.18 LTS** long-term kernel and the **apk (Alpine Linux)** package manager.
 
@@ -54,8 +56,8 @@ sudo pacman -Syu xorriso syslinux
    isohybrid LemonOS.iso
    ```
 
-## Installation on target PC / VirtualBox
-Boot the `LemonOS.iso` inside your virtual machine or on physical hardware. Once you enter the root shell, run the custom installer:
+## Installation on target PC / VirtualBox Boot the `LemonOS.iso` inside your virtual machine or on physical hardware. Once you enter the root shell, run the custom installer:
 ```bash
 lemon-install
 ```
+<img width="753" height="433" alt="Снимок экрана_20261001_200611" src="https://github.com/user-attachments/assets/0e6b5143-c230-4d05-8915-02b28483ee0b" />
