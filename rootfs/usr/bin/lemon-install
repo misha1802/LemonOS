@@ -1,0 +1,82 @@
+#!/bin/sh
+set -e
+
+DISK="/dev/sda"
+TARGET="/mnt/target"
+
+echo "=== LemonOS Installer ==="
+echo "WARNING: This will erase all data on $DISK!"
+echo "Press ENTER to continue..."
+read tmp
+
+echo "Formatting disk..."
+echo "label: dos" | sfdisk $DISK
+echo ",,L,*" | sfdisk $DISK
+
+MNT_DEV="${DISK}1"
+mkfs.ext4 -O "^metadata_csum,^64bit" -F $MNT_DEV
+
+echo "Copying system files to HDD..."
+mkdir -p $TARGET
+mount $MNT_DEV $TARGET
+
+# Переносим чистую операционную систему из текущего Live-окружения
+cp -a /bin /sbin /etc /lib /usr /var /root $TARGET/
+mkdir -p $TARGET/proc $TARGET/sys $TARGET/dev $TARGET/mnt $TARGET/home $TARGET/boot
+
+# Создаем загрузочный скрипт /init для жесткого диска (чтобы система работала без initramfs)
+cat << 'EOF' > $TARGET/init
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev
+
+for i in 1 2 3 4 5; do
+    if [ -d /sys/class/net/eth0 ]; then
+        break
+    fi
+    sleep 1
+done
+
+ifconfig eth0 up 2>/dev/null
+udhcpc -i eth0 -b -q
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+alias fastfetch="fastfetch --logo linux"
+fastfetch
+
+echo ""
+echo "======================================"
+echo "  Welcome to LemonOS 0.1 (HDD Boot)   "
+echo "======================================"
+echo ""
+
+exec /bin/sh
+EOF
+chmod +x $TARGET/init
+
+# Копируем ядро, которое сейчас работает в памяти
+cp /boot/vmlinuz $TARGET/boot/vmlinuz
+
+echo "Installing Syslinux bootloader..."
+extlinux --install $TARGET/boot
+
+cat << EOF > $TARGET/boot/extlinux.conf
+DEFAULT lemonos
+LABEL lemonos
+  LINUX /boot/vmlinuz
+  APPEND root=$MNT_DEV rw quiet
+EOF
+
+cat << EOF > $TARGET/extlinux.conf
+DEFAULT lemonos
+LABEL lemonos
+  LINUX /boot/vmlinuz
+  APPEND root=$MNT_DEV rw quiet
+EOF
+
+dd bs=440 count=1 conv=notrunc if=/usr/share/syslinux/mbr.bin of=$DISK
+
+umount $TARGET
+echo ""
+echo "Installation complete! You can now reboot and remove your USB drive."

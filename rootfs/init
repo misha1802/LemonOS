@@ -1,0 +1,32 @@
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev
+
+ln -sf /bin/busybox /sbin/poweroff
+ln -sf /bin/busybox /sbin/reboot
+
+mkdir -p /var/cache/apk /tmp
+mount -t tmpfs -o size=128M tmpfs /var/cache/apk
+mount -t tmpfs -o size=64M tmpfs /tmp
+
+for i in 1 2 3 4 5; do
+    if [ -d /sys/class/net/eth0 ]; then
+        break
+    fi
+    sleep 1
+done
+
+ifconfig eth0 up 2>/dev/null
+udhcpc -i eth0 -b -q
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+alias fastfetch="fastfetch --logo linux"
+
+echo ""
+echo "======================================"
+echo "  Welcome to LemonOS 0.1  "
+echo "======================================"
+echo ""
+
+exec /bin/sh

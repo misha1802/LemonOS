@@ -1,0 +1,3 @@
+::sysinit:/init
+tty1::respawn:/bin/sh
+tty2::respawn:/bin/sh

@@ -1,0 +1,8 @@
+alpine-baselayout
+alpine-keys
+apk-tools
+busybox
+e2fsprogs
+libc-utils
+sfdisk
+syslinux
