@@ -15,5 +15,7 @@ musl-locales
 nano
 sfdisk
 syslinux
+unzip
+util-linux-misc
 wireless-tools
 wpa_supplicant
