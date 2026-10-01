@@ -20,42 +20,70 @@ echo "Copying system files to HDD..."
 mkdir -p $TARGET
 mount $MNT_DEV $TARGET
 
-# Переносим чистую операционную систему из текущего Live-окружения
-cp -a /bin /sbin /etc /lib /usr /var /root $TARGET/
-mkdir -p $TARGET/proc $TARGET/sys $TARGET/dev $TARGET/mnt $TARGET/home $TARGET/boot
+cp -a /bin /sbin /etc /lib /usr /var /home $TARGET/
+mkdir -p $TARGET/proc $TARGET/sys $TARGET/dev $TARGET/mnt $TARGET/boot /run
 
-# Создаем загрузочный скрипт /init для жесткого диска (чтобы система работала без initramfs)
 cat << 'EOF' > $TARGET/init
 #!/bin/sh
 mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devtmpfs none /dev
 
+mkdir -p /dev/pts /tmp /var/cache/apk /run
+mount -t devpts none /dev/pts
+mount -t tmpfs -o size=128M tmpfs /var/cache/apk
+mount -t tmpfs -o size=16M tmpfs /run
+
+chmod 1777 /tmp
+
+ln -sf /bin/busybox /sbin/poweroff
+ln -sf /bin/busybox /sbin/reboot
+
+echo "LemonOS" > /etc/hostname
+hostname LemonOS
+
+export USER=lemon
+export HOME=/home/lemon
+export LOGNAME=lemon
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
+udevd --daemon
+udevadm trigger
+
 for i in 1 2 3 4 5; do
-    if [ -d /sys/class/net/eth0 ]; then
+    if [ -d /sys/class/net/eth0 ] || [ -d /sys/class/net/wlan0 ]; then
         break
     fi
     sleep 1
 done
 
 ifconfig eth0 up 2>/dev/null
-udhcpc -i eth0 -b -q
+udhcpc -i eth0 -b -q 2>/dev/null
+
+if [ -d /sys/class/net/wlan0 ]; then
+    ifconfig wlan0 up 2>/dev/null
+fi
+
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
+cat << 'EOF2' > /home/lemon/.bashrc
 alias fastfetch="fastfetch --logo linux"
+clear
+export FASTFETCH_OS_RELEASE="0.5"
 fastfetch
+PS1='\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+EOF2
 
-echo ""
-echo "======================================"
-echo "  Welcome to LemonOS 0.1 (HDD Boot)   "
-echo "======================================"
-echo ""
+echo "source /usr/share/bash-completion/bash_completion" >> /home/lemon/.bashrc
 
-exec /bin/sh
+startx
+
+echo "Xorg crashed or exited. Dropping to rescue shell..."
+exec /bin/bash --login
 EOF
 chmod +x $TARGET/init
 
-# Копируем ядро, которое сейчас работает в памяти
 cp /boot/vmlinuz $TARGET/boot/vmlinuz
 
 echo "Installing Syslinux bootloader..."
