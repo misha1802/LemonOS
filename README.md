@@ -1,5 +1,5 @@
 
-# LemonOS 0.1
+# LemonOS 0.2
 
 LemonOS is a lightweight and fast custom Linux distribution built on top of the **Linux 6.18 LTS** long-term kernel and the **apk (Alpine Linux)** package manager.
 
@@ -59,4 +59,4 @@ sudo pacman -Syu xorriso syslinux
 ```bash
 lemon-install
 ```
-<img width="741" height="438" alt="Снимок экрана_20261001_161716" src="https://github.com/user-attachments/assets/3b0a495c-c876-4706-a3c6-be5faa0dafee" />
+
