@@ -1,2 +1,3 @@
 #!/bin/sh
 feh --bg-scale /usr/share/backgrounds/wallpaper.jpg &
+tint2 &

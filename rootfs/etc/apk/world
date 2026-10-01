@@ -1,10 +1,13 @@
+adwaita-icon-theme
 alpine-baselayout
 alpine-keys
+alsa-utils
 apk-tools
 bash
 bash-completion
 busybox
 curl
+dillo
 e2fsprogs
 elinks
 eudev
@@ -21,6 +24,7 @@ nano
 openbox
 sfdisk
 syslinux
+tint2
 ttf-dejavu
 unzip
 util-linux-misc

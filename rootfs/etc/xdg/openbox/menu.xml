@@ -5,14 +5,14 @@
   <item label="Terminal">
     <action name="Execute"><command>lxterminal</command></action>
   </item>
+  <item label="Web Browser (Dillo)">
+    <action name="Execute"><command>dillo google.com</command></action>
+  </item>
   <item label="File Manager (MC)">
     <action name="Execute"><command>lxterminal -e mc</command></action>
   </item>
   <item label="System Monitor (Htop)">
     <action name="Execute"><command>lxterminal -e htop</command></action>
-  </item>
-  <item label="Web Browser (Elinks)">
-    <action name="Execute"><command>lxterminal -e elinks google.com</command></action>
   </item>
   <separator />
   <item label="Reboot System">
