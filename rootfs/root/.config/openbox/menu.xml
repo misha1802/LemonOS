@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu xmlns="http://openbox.org">
-
 <menu id="root-menu" label="Menu">
   <item label="Terminal">
     <action name="Execute"><command>lxterminal</command></action>
@@ -28,5 +27,4 @@
     <action name="Execute"><command>busybox poweroff -f</command></action>
   </item>
 </menu>
-
 </openbox_menu>

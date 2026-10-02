@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_config xmlns="http://openbox.org">
-
 <theme>
   <name>Onyx</name>
   <titleLayout>NLIMC</titleLayout>
   <keepBorder>yes</keepBorder>
   <animateIconify>no</animateIconify>
 </theme>
-
 <font place="Menu">
   <name>DejaVu Sans</name>
   <size>10</size>
   <weight>normal</weight>
   <slant>normal</slant>
 </font>
-
-<!-- Увеличиваем шрифт заголовка, что сделает кнопки управления огромными -->
 <font place="Titlebar">
   <name>DejaVu Sans</name>
   <size>15</size>
   <weight>bold</weight>
   <slant>normal</slant>
 </font>
-
 <font place="ActiveWindow">
   <name>DejaVu Sans</name>
   <size>10</size>
@@ -35,43 +30,35 @@
   <weight>normal</weight>
   <slant>normal</slant>
 </font>
-
 <mouse>
   <dragThreshold>8</dragThreshold>
   <doubleClickTime>400</doubleClickTime>
   <screenEdgeWarpTime>400</screenEdgeWarpTime>
-
   <context name="Titlebar">
     <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
     <mousebind action="Drag" button="Left"><action name="Move"/></mousebind>
     <mousebind action="DoubleClick" button="Left"><action name="ToggleMaximize"/></mousebind>
   </context>
-
   <context name="Close">
     <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
     <mousebind action="Click" button="Left"><action name="Close"/></mousebind>
   </context>
-
   <context name="Maximize">
     <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
     <mousebind action="Click" button="Left"><action name="ToggleMaximize"/></mousebind>
   </context>
-
   <context name="Iconify">
     <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
     <mousebind action="Click" button="Left"><action name="Iconify"/></mousebind>
   </context>
-
   <context name="Left" action="Drag" button="Left"><action name="Resize"><edge>left</edge></action></context>
   <context name="Right" action="Drag" button="Left"><action name="Resize"><edge>right</edge></action></context>
   <context name="Top" action="Drag" button="Left"><action name="Resize"><edge>top</edge></action></context>
   <context name="Bottom" action="Drag" button="Left"><action name="Resize"><edge>bottom</edge></action></context>
-
   <context name="Root">
     <mousebind action="Press" button="Right">
       <action name="ShowMenu"><menu>root-menu</menu></action>
     </mousebind>
   </context>
 </mouse>
-
 </openbox_config>
