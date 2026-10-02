@@ -14,12 +14,15 @@
   <weight>normal</weight>
   <slant>normal</slant>
 </font>
+
+<!-- Увеличиваем шрифт заголовка, что сделает кнопки управления огромными -->
 <font place="Titlebar">
   <name>DejaVu Sans</name>
-  <size>10</size>
+  <size>15</size>
   <weight>bold</weight>
   <slant>normal</slant>
 </font>
+
 <font place="ActiveWindow">
   <name>DejaVu Sans</name>
   <size>10</size>
@@ -39,73 +42,30 @@
   <screenEdgeWarpTime>400</screenEdgeWarpTime>
 
   <context name="Titlebar">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-    <mousebind action="Drag" button="Left">
-      <action name="Move"/>
-    </mousebind>
-    <mousebind action="DoubleClick" button="Left">
-      <action name="ToggleMaximize"/>
-    </mousebind>
-  </context>
-
-  <context name="Titlebar Top Left Right Bottom">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-    <mousebind action="Drag" button="Left">
-      <action name="Move"/>
-    </mousebind>
+    <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
+    <mousebind action="Drag" button="Left"><action name="Move"/></mousebind>
+    <mousebind action="DoubleClick" button="Left"><action name="ToggleMaximize"/></mousebind>
   </context>
 
   <context name="Close">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-    <mousebind action="Click" button="Left">
-      <action name="Close"/>
-    </mousebind>
+    <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
+    <mousebind action="Click" button="Left"><action name="Close"/></mousebind>
   </context>
 
   <context name="Maximize">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-    <mousebind action="Click" button="Left">
-      <action name="ToggleMaximize"/>
-    </mousebind>
+    <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
+    <mousebind action="Click" button="Left"><action name="ToggleMaximize"/></mousebind>
   </context>
 
   <context name="Iconify">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-    <mousebind action="Click" button="Left">
-      <action name="Iconify"/>
-    </mousebind>
+    <mousebind action="Press" button="Left"><action name="Focus"/><action name="Raise"/></mousebind>
+    <mousebind action="Click" button="Left"><action name="Iconify"/></mousebind>
   </context>
 
   <context name="Left" action="Drag" button="Left"><action name="Resize"><edge>left</edge></action></context>
   <context name="Right" action="Drag" button="Left"><action name="Resize"><edge>right</edge></action></context>
   <context name="Top" action="Drag" button="Left"><action name="Resize"><edge>top</edge></action></context>
   <context name="Bottom" action="Drag" button="Left"><action name="Resize"><edge>bottom</edge></action></context>
-  <context name="BLCorner" action="Drag" button="Left"><action name="Resize"><edge>bl</edge></action></context>
-  <context name="BRCorner" action="Drag" button="Left"><action name="Resize"><edge>br</edge></action></context>
-  <context name="TLCorner" action="Drag" button="Left"><action name="Resize"><edge>tl</edge></action></context>
-  <context name="TRCorner" action="Drag" button="Left"><action name="Resize"><edge>tr</edge></action></context>
-
-  <context name="Client">
-    <mousebind action="Press" button="Left">
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </mousebind>
-  </context>
 
   <context name="Root">
     <mousebind action="Press" button="Right">

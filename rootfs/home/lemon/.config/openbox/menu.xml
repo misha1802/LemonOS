@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu xmlns="http://openbox.org">
 
-<menu id="root-menu" label="LemonOS">
+<menu id="root-menu" label="Menu">
   <item label="Terminal">
     <action name="Execute"><command>lxterminal</command></action>
+  </item>
+  <item label="Text Editor (Mousepad)">
+    <action name="Execute"><command>mousepad</command></action>
+  </item>
+  <item label="Calculator (Galculator)">
+    <action name="Execute"><command>galculator</command></action>
   </item>
   <item label="File Manager (MC)">
     <action name="Execute"><command>lxterminal -e mc</command></action>
