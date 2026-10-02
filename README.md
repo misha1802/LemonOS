@@ -1,5 +1,5 @@
 
-# LemonOS 0.8
+# LemonOS 1.0
 
 
 LemonOS is a lightweight and fast custom Linux distribution built on top of the **Linux 6.18 LTS** long-term kernel and the **apk (Alpine Linux)** package manager.
