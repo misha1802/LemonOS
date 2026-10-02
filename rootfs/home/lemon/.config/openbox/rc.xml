@@ -2,7 +2,7 @@
 <openbox_config xmlns="http://openbox.org">
 
 <theme>
-  <name>Clearlooks</name>
+  <name>Onyx</name>
   <titleLayout>NLIMC</titleLayout>
   <keepBorder>yes</keepBorder>
   <animateIconify>no</animateIconify>

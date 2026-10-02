@@ -6894,6 +6894,96 @@ R:wcurl
 a:0:0:755
 Z:Q1TNk9o4p/Po1+gngZeH0LTywRxe4=
 
+C:Q1/si6IY2E3C4zVroBgrvz66Vss/o=
+P:dbus
+V:1.14.10-r1
+A:x86_64
+S:113056
+I:425984
+T:Freedesktop.org message bus system
+U:https://www.freedesktop.org/Software/dbus
+L:AFL-2.1 OR GPL-2.0-or-later
+o:dbus
+m:Natanael Copa <ncopa@alpinelinux.org>
+t:1705843457
+c:aeb79a573b67f755b4f27f98df9af96852e98878
+D:/bin/sh so:libc.musl-x86_64.so.1 so:libdbus-1.so.3 so:libexpat.so.1
+p:cmd:dbus-cleanup-sockets=1.14.10-r1 cmd:dbus-daemon=1.14.10-r1 cmd:dbus-monitor=1.14.10-r1 cmd:dbus-run-session=1.14.10-r1 cmd:dbus-send=1.14.10-r1 cmd:dbus-test-tool=1.14.10-r1 cmd:dbus-update-activation-environment=1.14.10-r1 cmd:dbus-uuidgen=1.14.10-r1
+F:etc
+F:etc/dbus-1
+R:session.conf
+Z:Q1XFWT8jk9U1wr6n/rOvgFvnvDNYc=
+R:system.conf
+Z:Q1UGszdWGTocbDgLLrhA2OtFw6TqE=
+F:usr
+F:usr/bin
+R:dbus-cleanup-sockets
+a:0:0:755
+Z:Q1z94jUdwtwicCFNVq+/rMnWhUJ78=
+R:dbus-daemon
+a:0:0:755
+Z:Q1VmETWwq0SPE5Dkll4TqjLjnSJFc=
+R:dbus-monitor
+a:0:0:755
+Z:Q19vl+35OrD+F/v8JlTymxUFefPyo=
+R:dbus-run-session
+a:0:0:755
+Z:Q10DhENGEaO3XWHbtNg1qsvLCnR3w=
+R:dbus-send
+a:0:0:755
+Z:Q1FkxujMz4xc+rCqLjhP+D9z/SiC8=
+R:dbus-test-tool
+a:0:0:755
+Z:Q1FfxIC8XnLaU47DNZB99jOX5ut94=
+R:dbus-update-activation-environment
+a:0:0:755
+Z:Q1Xb7IA9xTgHXPafy4x6YhvSWrV58=
+R:dbus-uuidgen
+a:0:0:755
+Z:Q1XBl8lF04ZpcoPN0wWa5x3uA8Grg=
+F:usr/share
+F:usr/share/dbus-1
+R:session.conf
+Z:Q1P8lHOOntI5FOXDfnON5Xg4Ce+pE=
+R:system.conf
+Z:Q1eONKvYL/K1g/VAhbG3NvCFAesjI=
+F:usr/share/dbus-1/services
+F:usr/share/dbus-1/session.d
+F:usr/share/dbus-1/system-services
+F:usr/share/dbus-1/system.d
+F:usr/share/xml
+F:usr/share/xml/dbus-1
+R:busconfig.dtd
+Z:Q1R8zmEyxWOZLkb75vaT2QdH5/aT8=
+R:catalog.xml
+Z:Q1T9j1RdclC/cOnJ9E8M1qhIxFBQA=
+R:introspect.dtd
+Z:Q1lAB4V+WL37o/UUTm7bUnTP76EF8=
+F:var
+F:var/lib
+F:var/lib/dbus
+
+C:Q1TO4h8bChmpPUINCzINwgGToVu+s=
+P:dbus-daemon-launch-helper
+V:1.14.10-r1
+A:x86_64
+S:11453
+I:45056
+T:DBus SUID launch helper for autospawning
+U:https://www.freedesktop.org/Software/dbus
+L:AFL-2.1 OR GPL-2.0-or-later
+o:dbus
+m:Natanael Copa <ncopa@alpinelinux.org>
+t:1705843457
+c:aeb79a573b67f755b4f27f98df9af96852e98878
+D:so:libc.musl-x86_64.so.1 so:libdbus-1.so.3 so:libexpat.so.1
+i:dbus=1.14.10-r1
+F:usr
+F:usr/libexec
+R:dbus-daemon-launch-helper
+a:0:101:4750
+Z:Q1guKM2I02A0ll2x0wpV0xCsBhGqQ=
+
 C:Q1Hua6WeUZqzuBgIF6rU6fUVRNCU4=
 P:dbus-libs
 V:1.14.10-r1
